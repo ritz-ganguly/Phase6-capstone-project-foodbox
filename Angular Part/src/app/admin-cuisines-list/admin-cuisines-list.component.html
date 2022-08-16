@@ -1,0 +1,31 @@
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Cuisine ID</th>
+                <th>Cuisine Name</th>
+                <th>Action Delete</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let c of cuis">
+                <td>{{c.cuisineId}}</td>
+                <td>{{c.cuisineName}}</td>
+                <td><button class="btn btn-primary" (click)="actionDelete(c)">Delete</button></td>
+
+
+
+            </tr>
+
+
+        </tbody>
+
+    </table>
+
+    <br><br>
+    <button class="btn btn-primary" (click)="goBack()">go Back to Home</button>
+
+</div>

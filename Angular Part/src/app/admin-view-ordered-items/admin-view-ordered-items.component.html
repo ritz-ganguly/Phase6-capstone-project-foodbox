@@ -1,0 +1,45 @@
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Quantity Ordered</th>
+                <th>Food ID</th>
+                <th>Food Name</th>
+                <th>Food Price</th>
+                <th>User ID</th>
+                <th>UserName</th>
+                <th>Address</th>
+                <th>Order Date</th>
+                <th>Total Order Price </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let oi of orderedItems">
+
+                <td>{{oi.orderedItemId}}</td>
+                <td>{{oi.quantityOrdered}}</td>
+                <td>{{oi.foodItem.foodId}}</td>
+                <td>{{oi.foodItem.foodName}}</td>
+                <td>{{oi.foodItem.foodPrice}}</td>
+                <td>{{oi.user.userId}}</td>
+                <td>{{oi.user.userName}}</td>
+                <td>{{oi.user.address}}</td>
+                <td>{{oi.orders.orderDate}}</td>
+                <td>{{oi.orders.totalPrice}}</td>
+
+            </tr>
+
+        </tbody>
+
+
+    </table>
+
+    <div class="container">
+
+        <button class="btn btn-primary" (click)="goBack()">Go back to home</button>
+    </div>
+
+</div>

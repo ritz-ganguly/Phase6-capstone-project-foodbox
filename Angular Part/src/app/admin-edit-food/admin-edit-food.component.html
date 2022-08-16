@@ -1,0 +1,148 @@
+<h1>Edit Food Page</h1>
+
+<div class="container">
+    <form #editFoodForm="ngForm" (ngSubmit)="onSubmit(editFoodForm.value)">
+        <div>
+            <label>Food Name</label><br>
+            <input type="text" name="foodName" maxlength="100" required [(ngModel)]="foodItm.foodName"
+                #foodName="ngModel">
+            <div *ngIf="foodName.touched && foodName.invalid">
+                <p *ngIf="foodName.errors && foodName.errors['required']">Food Name is required </p>
+                <p *ngIf="foodName.errors && foodName.errors['maxlength']">Maximum length is 100 chars
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div>
+            <label>Food Description</label><br>
+            <input type="text" name="description" maxlength="100" required [(ngModel)]="foodItm.description"
+                #description="ngModel">
+            <div *ngIf="description.touched && description.invalid">
+                <p *ngIf="description.errors && description.errors['required']">Description is required </p>
+                <p *ngIf="description.errors && description.errors['maxlength']">Maximum length is 100 chars
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div>
+            <label>Cuisine Name</label><br>
+            <select name="cuisType" [(ngModel)]="newCuisineName" #cuisType="ngModel" class="form-control" required>
+                <option *ngFor="let c of cuisNames | keyvalue" [value]="c.value">{{c.value}}</option>
+            </select>
+            <div *ngIf="cuisType.touched && cuisType.invalid">
+                <p *ngIf="cuisType.errors && cuisType.errors['required']">Cuisine is required </p>
+
+
+            </div>
+
+        </div>
+
+
+        <div>
+            <label>Available Quantity</label><br>
+            <input type="number" name="availableQuantity" maxlength="10" required
+                [(ngModel)]="foodItm.availableQuantity" #availableQuantity="ngModel">
+            <div *ngIf="availableQuantity.touched && availableQuantity.invalid">
+                <p *ngIf="availableQuantity.errors && availableQuantity.errors['required']">Quantity is required </p>
+                <p *ngIf="availableQuantity.errors && availableQuantity.errors['maxlength']">Maximum length is 10 digits
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div>
+            <label>Food Price</label><br>
+            <input type="number" name="foodPrice" maxlength="10" required [(ngModel)]="foodItm.foodPrice"
+                #foodPrice="ngModel">
+            <div *ngIf="foodPrice.touched && foodPrice.invalid">
+                <p *ngIf="foodPrice.errors && foodPrice.errors['required']">Food Price is required </p>
+                <p *ngIf="foodPrice.errors && foodPrice.errors['maxlength']">Maximum length is 10 digits
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!--
+        <div>
+            <label>Is Available?</label><br>
+            <input type="text" name="isAvailable" maxlength="30" required [(ngModel)]="foodItm.isAvailable"
+                #isAvailable="ngModel">
+            <div *ngIf="isAvailable.touched && isAvailable.invalid">
+                <p *ngIf="isAvailable.errors && isAvailable.errors['required']">Availability is required </p>
+                <p *ngIf="isAvailable.errors && isAvailable.errors['maxlength']">Maximum length is 30 chars
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        -->
+
+        <div>
+            <label>Is Available?</label><br>
+            <select name="isAvailable" [(ngModel)]="foodItm.isAvailable" #isAvailable="ngModel" class="form-control"
+                required>
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+            </select>
+            <div *ngIf="isAvailable.touched && isAvailable.invalid">
+                <p *ngIf="isAvailable.errors && isAvailable.errors['required']">Availability is required </p>
+            </div>
+
+
+        </div>
+
+
+        <div>
+            <label>Image Path</label><br>
+            <input type="text" name="imagePath" maxlength="80" required [(ngModel)]="foodItm.imagePath"
+                #imagePath="ngModel">
+            <div *ngIf="imagePath.touched && imagePath.invalid">
+                <p *ngIf="imagePath.errors && imagePath.errors['required']">Image Path is required </p>
+                <p *ngIf="imagePath.errors && imagePath.errors['maxlength']">Maximum length is 80 chars
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <button class="btn btn-primary" type="submit" [disabled]="!editFoodForm.valid">Submit</button>
+
+    </form>
+
+
+
+</div>
+
+<br><br>
+<div class="container">
+
+    <button class="btn btn-primary" (click)="goBack()">Go back to home</button>
+</div>

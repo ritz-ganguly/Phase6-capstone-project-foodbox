@@ -1,0 +1,43 @@
+<h1>Customer Home Page</h1>
+<br><br>
+<a routerLink="/customer-logout">Logout</a><br>
+<a routerLink="/customer-view-purchase-history">View Purchase History</a><br>
+
+<div class="container">
+
+    <input type="text" [(ngModel)]="searchText" placeholder="Search by Cuisines">
+    <div *ngFor="let cd of staticFDetails | customerFilterByCuisine: searchText: 'cuisineName'"
+        class="row border border-primary">
+        <p>Food ID: {{cd.foodId}}</p>
+        <p>Food Name: {{cd.foodName}}</p>
+        <div class="col-sm-2">
+            <img [src]="cd.imagePath" class="img-fluid">
+        </div>
+        <p>Cuisine Name: {{cd.cuisine.cuisineName}}</p>
+        <p>Description: {{cd.description}}</p>
+        <p>Price: {{cd.foodPrice}}</p>
+        <span> &nbsp; &nbsp; &nbsp; &nbsp;
+            <button class="btn btn-primary" [disabled]="cd.quantityOrdered === 0"
+                (click)="decrement(cd.foodId)">-</button>
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+
+            {{cd.quantityOrdered}}
+
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+            <button class="btn btn-primary" [disabled]="cd.quantityOrdered === cd.availableQuantity"
+                (click)="increment(cd.foodId)">+</button>
+
+
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+            <button class="btn btn-primary" [disabled]="canProceed() === false" (click)="proceed()">Proceed to
+                checkout</button>
+
+        </span>
+
+
+
+
+    </div>
+
+
+</div>

@@ -1,0 +1,20 @@
+<h1>Admin Add Cuisine Page</h1>
+
+<div class="container">
+    <form #addCuisineForm="ngForm" (ngSubmit)="onSubmit(addCuisineForm.value)">
+        <div>
+            <label>Cuisine Name</label><br>
+            <input type="text" name="cuisineName" maxlength="50" required [(ngModel)]="cuis.cuisineName"
+                #cuisineName="ngModel">
+            <div *ngIf="cuisineName.touched && cuisineName.invalid">
+                <p *ngIf="cuisineName.errors && cuisineName.errors['required']">Cuisine name is required </p>
+                <p *ngIf="cuisineName.errors && cuisineName.errors['maxlength']">Maximum length is 50 chars
+                </p>
+
+            </div>
+
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!addCuisineForm.valid">Submit</button>
+    </form>
+
+</div>

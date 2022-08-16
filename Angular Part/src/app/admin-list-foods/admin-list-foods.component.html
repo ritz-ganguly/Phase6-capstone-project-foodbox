@@ -1,0 +1,65 @@
+<h1>View Foods Page</h1>
+
+<br><br>
+<input type="text" [(ngModel)]="searchText" placeholder="Search by Cuisines">
+<div class="container">
+
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <th>Food ID</th>
+                <th>Food Name</th>
+                <th>food Image</th>
+                <th>Food Description</th>
+                <th>Food Price</th>
+                <th>Cuisine ID</th>
+                <th>Cuisine Name</th>
+                <th>Is Available</th>
+                <th>Available Quantity</th>
+                <th>Action Delete</th>
+                <th>Action Edit</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+
+            <tr *ngFor="let f of food | customerFilterByCuisine: searchText: 'cuisineName'">
+                <td>{{f.foodId}}</td>
+                <td>{{f.foodName}}</td>
+                <td>
+                    <div class="col-sm-2">
+                        <img [src]="f.imagePath" class="img-fluid">
+                    </div>
+                </td>
+
+                <td>{{f.description}}</td>
+                <td>{{f.foodPrice}}</td>
+                <td>{{f.cuisine.cuisineId}}</td>
+                <td>{{f.cuisine.cuisineName}}</td>
+                <td>{{f.isAvailable}}</td>
+                <td>{{f.availableQuantity}}</td>
+                <td><button class="btn btn-primary" (click)="actionDelete(f)">Delete</button></td>
+                <td><a routerLink="../admin-edit-food/{{f.foodId}}">Edit</a></td>
+
+
+            </tr>
+        </tbody>
+
+
+
+    </table>
+
+    <br><br>
+    <button class="btn btn-primary" (click)="goBack()">go Back to Home</button>
+
+
+
+
+
+
+
+</div>

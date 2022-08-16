@@ -1,0 +1,39 @@
+<h1>Cart Details Page</h1>
+
+<div class="container">
+
+
+    <div *ngFor="let cd of finalCart" class="row border border-primary">
+        <p>Food ID: {{cd.foodId}}</p>
+        <p>Food Name: {{cd.foodName}}</p>
+        <div class="col-sm-2">
+            <img [src]="cd.imagePath" class="img-fluid">
+        </div>
+        <p>Cuisine Name: {{cd.cuisine.cuisineName}}</p>
+        <p>Description: {{cd.description}}</p>
+        <p>Price: {{cd.foodPrice}}</p>
+        <span> &nbsp; &nbsp; &nbsp; &nbsp;
+            <button class="btn btn-primary" [disabled]="cd.quantityOrdered === 0"
+                (click)="decrement(cd.foodId)">-</button>
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+
+            {{cd.quantityOrdered}}
+
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+            <button class="btn btn-primary" [disabled]="cd.quantityOrdered === cd.availableQuantity"
+                (click)="increment(cd.foodId)">+</button>
+
+
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+            <button class="btn btn-primary" [disabled]="canProceed() === false" (click)="proceed()">Proceed to
+                Payment</button>
+
+        </span>
+
+
+
+
+    </div>
+
+
+</div>

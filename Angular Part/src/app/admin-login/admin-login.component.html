@@ -1,0 +1,34 @@
+<h1>Admin login page</h1>
+<div class="container">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <div>
+            <label>User Name</label>
+            <input type="email" name="userName" maxlength="150" required [(ngModel)]="admin.userName"
+                #userName="ngModel">
+            <div *ngIf="userName.touched && userName.invalid">
+                <p *ngIf="userName.errors && userName.errors['required']">Email is required </p>
+                <p *ngIf="userName.errors && userName.errors['maxlength']">Maximum length is 150 chars </p>
+
+            </div>
+
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" maxlength="150" [(ngModel)]="admin.password" #password="ngModel"
+                required>
+            <div *ngIf="password.touched && password.invalid">
+                <p *ngIf="password.errors && password.errors['required']">Password is required</p>
+                <p *ngIf="password.errors && password.errors['maxlength']">Maximum length is 150 chars </p>
+
+            </div>
+
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Submit</button>
+
+
+    </form>
+
+
+
+</div>
